@@ -1,0 +1,57 @@
+local player = game.Players.LocalPlayer
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
+    if player.UserId == 4636830533 or player.UserId == 4636825706 or player.UserId == 2207167228 or player.UserId == 5864620643 or player.UserId == 5042713445 then
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Congratulations - you were able to meet the administrator of this hub and therefore this function became available to you",
+	Image = "rbxassetid://4483345998",
+	Time = 10
+})
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/lolpoppyus/Roblox-Lua/master/Pop%20UI%20Lib", true))()
+
+local ui = library:Tab("Punish Player Alpha")
+
+ui:Textbox("Player Name or Display", function(arg)
+last_pick_sin_mrazy = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame 
+
+PlayerName = arg
+local function findPlayer(name)
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if player.Name:lower():match(name:lower()) or player.DisplayName:lower():match(name:lower()) then
+            return player
+        end
+    end
+    return nil
+end
+
+local function teleportToPlayer(targetPlayer)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    local targetCharacter = targetPlayer.Character or targetPlayer.CharacterAdded:Wait()
+    local targetHumanoidRootPart = targetCharacter:WaitForChild("HumanoidRootPart")
+
+    humanoidRootPart.CFrame = targetHumanoidRootPart.CFrame
+end
+
+local targetName = PlayerName
+local targetPlayer = findPlayer(targetName)
+
+if targetPlayer then
+for i = 1, 5 do
+task.wait()
+    teleportToPlayer(targetPlayer)
+ end
+ wait(0.1)
+for i = 1, 10 do
+game:GetService("Players").LocalPlayer.Character:FindFirstChild("Flowing Water").LocalScript.Event:FireServer()
+end
+wait(0.4)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-56, -42, -763)
+else
+    print("Player not found")
+end
+wait(5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = last_pick_sin_mrazy
+end)
+ end
